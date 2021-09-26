@@ -1,0 +1,14 @@
+
+.text{
+    color: white;
+    opacity:1;
+}
+
+.sentence{
+    max-width: 300px;
+}
+
+.container-md{
+    background-color:#38383a;
+    opacity:0.7;
+}

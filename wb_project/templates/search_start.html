@@ -1,0 +1,181 @@
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+    <!-- Place favicon.png in the root directory -->
+
+    <!-- All Style Links Here -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <style>
+        #bbb
+        {
+       border-radius:5px;
+       width:70px;
+       height:45px;
+       font-size:15px;
+       margin-left:20px;
+       margin-top:-3px;
+       cursor:pointer;
+       background-color:#d3d3d3;
+       }
+    </style>
+    <!-- All Style Links Here End -->
+
+    <script>
+
+
+
+    </script>
+</head>
+<body>
+<!-- Header Go -->
+<div class="header position-relative">      
+    <div>                
+        <div class="col-lg-9">
+            <div class="header--menu">
+                <div class="header--menu__main">
+                    <nav id="mobile-menu">
+                        <ul>
+                            <li><a href="http://127.0.0.1:8000/start">分级检索</a></li>
+                            <li><a href="http://127.0.0.1:8000/them">主题分析</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>                                
+    </div>
+</div>
+<!-- Header End /-->
+
+<!-- Main start -->
+<main class="main--wrapper">
+<!-- Hero -->
+<section class="hero position-relative">
+    <div class="hero--active">
+        <div class="hero-single hero__padding" data-overlay="dark" data-opacity="4" data-background="{% static 'image/hero/hero-bg-9.jpg' %}">
+            <div class="hero__shape"></div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 text-center">
+                        <div class="hero__caption">
+                            <div class="contacts__input position-relative">
+                                <form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+
+
+                        <input type="text" placeholder="请输入检索内容" name="q" class="form-control">
+                                    <br><br>
+                                    <div style="background:lightgrey;">
+
+<br>
+                        <input type="radio" name="level" id="low" value=0 checked="checked" /> 低级
+                        <input type="radio" name="level" id="medium" value=1 /> 中级
+                        <input type="radio" name="level" id="high" value=3 /> 高级<br>
+<br>
+</div>
+                     <br>
+                                    <button type="submit" id="bbb">搜索</button>
+
+                    </form>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero end /-->
+
+
+</main>
+<!-- Main start end /-->
+<!-- Footer -->
+<footer class="footer">
+    
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer__copyright text-center">
+                        <p class="m-0">BLCU——2021春文本内容计算</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer end -->
+
+
+
+
+
+
+    <!-- All External JavaScript Links Here -->
+
+   <script type="text/javascript">
+
+        $("#bbb").click(function(){
+            alert(1);
+
+        var label=$('input:radio:checked').val();
+        alert(label);
+
+        $.ajax({
+          url:'/result/',
+          type:'POST',
+          async:false,
+          data:JSON.stringify({
+            "label":label,
+          }),
+          dataType: 'json',
+          contentType: 'application/json',
+          success:function(result){
+            window.location.reload();
+          },
+        });
+    });
+   </script>
+    <script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/ajax-form.js"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/isotope.pkgd.min.js"></script>
+    <script src="../static/js/jquery.meanmenu.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/tilt.jquery.js"></script>
+    <script src="../static/js/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery.counterup.min.js"></script>
+    <script src="../static/js/aos.js"></script>
+    <script src=".../static/js/plugins.js"></script>
+    <script src="../static/js/main.js"></script>
+    <!-- All External JavaScript Links Here End -->
+</body>
+</html>

@@ -1,0 +1,232 @@
+{% load highlight %}
+<html>
+<head>
+        <meta charset="UTF-8">
+     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <title>检索结果</title>
+        <style>
+
+        #bbb
+        {
+       border-radius:5px;
+       width:60px;
+       height:43px;
+       font-size:15px;
+       margin-left:880px;
+       margin-top:-65px;
+       cursor:pointer;
+       background-color:#d3d3d3;
+       }
+
+       .content_box
+       {
+        width:700px;
+        margin-left:300px;
+        background-color:#ffffff;
+       }
+
+       .next
+       {
+       margin-top:30px;
+       background-color:yellow;
+
+
+       }
+
+
+        </style>
+    </head>
+
+   <style>
+        span.highlighted {
+            background-color: lightblue;
+
+        }
+        a{
+                    font-size: 10pt;
+                    background-color: #ffff00;
+                    text-align: left;
+                    text-decoration: underline;
+
+}
+
+      a:visited {
+                    font-size: 9pt;
+                    color: lightblue;
+                    text-align: left;
+                    text-decoration: underline;
+                    TEXT-DECORATION:none;
+}
+
+    </style>
+    <!-- Header Go -->
+    <div class="header position-relative">
+        <div>
+            <div class="col-lg-9">
+                <div class="header--menu">
+                    <div class="header--menu__main">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li><a href="http://127.0.0.1:8000/index">分级检索</a></li>
+                                <li><a href="http://127.0.0.1:8000/them">主题分析</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End /-->
+<div style="background-image:url(../static/image/hero/hero-bg-9.JPG);">
+<form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}" style="margin-top:100px;">
+<br>
+                   <input type="search" name="q" class="form-control" style="width:500px;height:43px;margin-left:360px;margin-top:120px;" placeholder="搜索" required>
+    <div style="background-color: lightgray;width:500px;height: 30px;border-radius: 3px;font-size: 15px;margin-top: 0px;margin-left: 360px;">
+
+                        <span>难度选择：</span>
+
+                        <input type="radio" name="level" id="low" value=0 checked="checked" /> 低级
+                        <input type="radio" name="level" id="medium" value=1 /> 中级
+                        <input type="radio" name="level" id="high" value=3 /> 高级
+
+
+                     </div>
+
+                     <button type="submit" id="bbb">搜索</button>
+
+                    </form>
+        {% if query %}
+
+   <div class="panel panel-default"  style=";width:800px;margin-left:260px;margin-top:30px;">
+    <div class="panel-heading">
+        <h3 class="panel-title">查询词：{{ query }} | 搜索结果</h3>
+        <h3> {{ degree }}</h3>
+
+    </div>
+    <div class="panel-body">
+
+
+
+
+         <table class="table">
+                        <thead>
+
+                            <tr>
+                                <td class="col-md-9">句子</td>
+                                <td class="col-md-3">定级</td>
+
+                            </tr>
+
+
+                        </thead>
+
+             <tbody>
+             {% for result in page.object_list %}
+             {% if result.object.xueduan == degree %}
+<!--             {% if result.object.xueduan == degree %}-->
+                            <tr>
+                                <td id="here">{% highlight result.object.article with query %}<br><br></td>
+                                <td>{{ result.object.xueduan }}</td>
+                                <td><a href="http://127.0.0.1:8000/them">主题分析</a></td>
+
+
+                            </tr>
+
+
+<!--             {% endif %}-->
+                 {% endif %}
+
+              {% empty %}
+                No results found.
+            {% endfor %}
+                        </tbody>
+         </table>
+         <br>
+
+
+
+
+            {% if page.has_previous or page.has_next %}
+                    {% if page.has_previous %}<a href="?q={{ query }}&page={{ page.previous_page_number }}">{% endif %}« 前一页{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&page={{ page.next_page_number }}">{% endif %}后一页 »{% if page.has_next %}</a>{% endif %}
+
+            {% endif %}
+        {% endif %}
+
+
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+   <script type="text/javascript">
+
+        $("#bbb").click(function(){
+
+        var label=$('input:radio:checked').val();
+
+        $.ajax({
+          url:'/result/',
+          type:'POST',
+          async:false,
+          data:JSON.stringify({
+            "label":label,
+          }),
+          dataType: 'json',
+          contentType: 'application/json',
+          success:function(result){
+            window.location.reload();
+          },
+        });
+    });
+
+    $("#modi").click(function(){
+        var content=$(this).parent().parent().children('td:first-child').text()
+        alert(content)
+        $.ajax({
+          url:'/them/',
+          type:'POST',
+          async:false,
+          data:JSON.stringify({
+            "content":content,
+          }),
+          dataType: 'json',
+          contentType: 'application/json',
+          success:function(result){
+            window.location.reload();
+          },
+        });
+    });
+
+    </script>
+</html>

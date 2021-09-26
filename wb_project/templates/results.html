@@ -1,0 +1,178 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.0/jquery.js"></script>
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicFon.png">
+    <!-- Place favicon.png in the root directory -->
+
+    <!-- All Style Links Here -->
+    <style>
+
+        #bbb
+        {
+       border-radius:5px;
+       width:130px;
+       height:43px;
+       font-size:15px;
+       margin-left:880px;
+       margin-top:-45px;
+       cursor:pointer;
+       background-color:#d3d3d3;
+       }
+
+       .content_box
+       {
+        width:700px;
+        margin-left:300px;
+        background-color:#ffffff;
+       }
+
+       .next
+       {
+       margin-top:30px;
+       background-color:yellow;
+
+
+       }
+
+    </style>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+</head>
+<body>
+    <!-- Header Go -->
+    <div class="header position-relative">      
+        <div>                
+            <div class="col-lg-9">
+                <div class="header--menu">
+                    <div class="header--menu__main">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li><a href="http://127.0.0.1:8000/index">分级检索</a></li>
+                                <li><a href="http://127.0.0.1:8000/them">主题分析</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>                                
+        </div>
+    </div>
+    <!-- Header End /-->
+
+<!-- Main start -->
+<main class="main--wrapper" style="background-image:url(../static/image/hero/hero-bg-9.jpg);margin-top:80px;">
+<!-- Hero -->
+<form method="post" id="searchform" action="{% url 'them' %}" style="margin-top:-10px;">
+<br>
+<input type="text" name="query" class="form-control" style="width:500px;height:123px;margin-left:360px;" placeholder="搜索">
+    <button type="submit" id="bbb">主题分析</button>
+
+</form>
+    <br>
+    <div class="panel panel-info" style="width:1200px;margin-left:200px;opacity:0.97;">
+    <div class="panel-heading">
+        <h3 class="panel-title">分析结果</h3>
+    </div>
+    <div class="panel-body">
+        {% if content %}
+        <p style="background-color:lightyellow;font-weight:bold;">原句子</p>
+        <p>{{ content }}</p>
+        <p style="background-color:lightyellow;font-weight:bold;">关键词提取结果</p>
+        <p>{% for k in keyword %}
+            {{ k }}
+            {% endfor %}
+        </p>
+        <p style="background-color:lightyellow;font-weight:bold;">摘要提取结果</p>
+        <p>{{ final }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Hero end /-->
+<br><br><br>
+
+</main>
+<!-- Main start end /-->
+<!-- Footer -->
+<footer class="footer">
+    
+    <div class="footer__bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="footer__copyright text-center">
+                        <p class="m-0">BLCU--2021春文本内容计算</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer end -->
+
+
+
+
+
+<script>
+        $("#bbb").click(function(){
+        var label=$('input:radio:checked').val();
+        $.ajax({
+          url:'/result/',
+          type:'POST',
+          async:false,
+          data:JSON.stringify({
+            "label":label,
+          }),
+          dataType: 'json',
+          contentType: 'application/json',
+          success:function(result){
+            window.location.reload();
+          },
+        });
+    });
+</script>
+
+
+    <!-- All External JavaScript Links Here -->
+    <script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/ajax-form.js"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/isotope.pkgd.min.js"></script>
+    <script src="../static/js/jquery.meanmenu.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery.counterup.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/tilt.jquery.js"></script>
+    <script src="../static/js/aos.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/main.js"></script>
+    <!-- All External JavaScript Links Here End -->
+</body>
+</html>

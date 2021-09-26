@@ -1,0 +1,121 @@
+
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/favicon.png">
+    <!-- Place favicon.png in the root directory -->
+
+    <!-- All Style Links Here -->
+
+<!--    <link rel="stylesheet" href="../static/css/bootstrap.min.css">-->
+<!--    <link rel="stylesheet" href="../static/css/aos.css">-->
+<!--    <link rel="stylesheet" href="../static/css/meanmenu.css">-->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom-animation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <!-- All Style Links Here End -->
+</head>
+<body>
+<!-- Header Go -->
+<div class="header position-relative">      
+    <div>                
+        <div class="col-lg-9">
+            <div class="header--menu">
+                <div class="header--menu__main">
+                    <nav id="mobile-menu">
+                        <ul>
+                            <li><a href="http://127.0.0.1:8000/index">分级检索</a></li>
+                            <li><a href="http://127.0.0.1:8000/them">主题分析</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>                                
+    </div>
+</div>
+<!-- Header End /-->
+
+<!-- Main start -->
+<main class="main--wrapper">
+    <!-- Hero -->
+    <section class="hero position-relative">
+        <div class="hero--active">
+            <div class="hero-single hero__padding" data-opacity="4" data-background="../static/image/hero/hero-bg-9.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="hero__caption hero__caption--h3">
+                                <h1 class="hero--big-title white-color fw-700" data-animation="fadeInDown" data-delay=".4s">分级检索平台</h1>
+                                <h2 class="hero--big-title white-color fw-500" data-animation="fadeInDown" data-delay=".4s">Hierarchical Article Search System</h2>
+                                <a href="{% url 'start' %}" class="btn btn--white theme-color" data-animation="fadeInRight" data-delay=".6s">start a query</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+        </div>
+    </section>
+    <!-- Hero end /-->
+
+
+</main>
+    <!-- Main start end /-->
+    <!-- Footer -->
+    <footer class="footer">
+        
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="footer__copyright text-center">
+                            <p class="m-0">BLCU——2021春文本内容计算</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end -->
+
+
+
+    <!-- All External JavaScript Links Here -->
+    <script src="../static/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/ajax-form.js"></script>
+    <script src="../static/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../static/js/isotope.pkgd.min.js"></script>
+    <script src="../static/js/jquery.meanmenu.min.js"></script>
+    <script src="../static/js/owl.carousel.min.js"></script>
+    <script src="../static/js/jquery.magnific-popup.min.js"></script>
+    <script src="../static/js/slick.min.js"></script>
+    <script src="../static/js/jquery.waypoints.min.js"></script>
+    <script src="../static/js/jquery.counterup.min.js"></script>
+    <script src="../static/js/wow.min.js"></script>
+    <script src="../static/js/tilt.jquery.js"></script>
+    <script src="../static/js/aos.js"></script>
+    <script src="../static/js/plugins.js"></script>
+    <script src="../static/js/main.js"></script>
+    <!-- All External JavaScript Links Here End -->
+</body>
+</html>
